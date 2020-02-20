@@ -9,4 +9,6 @@ def blog(request):
 def post(request):
     return render(request,'post.html',{})
 
+
+
     
