@@ -1,0 +1,6 @@
+<h3>Login page</h3>
+<form method="post" action="/account/login/">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="login">
+</form>

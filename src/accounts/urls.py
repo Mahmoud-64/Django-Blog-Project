@@ -1,17 +1,13 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
+from django.conf.urls import include
 from django.conf import settings
-from .views import index,blog,post
-from post import views as postview
+from .views import signup_view,login_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index),
-    path('blog/', blog),
-    path('post/', post),
-    path('admin_panel', postview.admin_panel_page),
-    path('account/',include('accounts.urls')),
+    path('signup/', signup_view),
+    path('login/', login_view),
 ]
 
 if settings.DEBUG:
