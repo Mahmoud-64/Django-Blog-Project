@@ -12,6 +12,7 @@ urlpatterns = [
     path('post/', post),
     path('admin_panel', postview.admin_panel_page),
     path('account/',include('accounts.urls')),
+    path('admin/all_users',postview.all_users),
 ]
 
 if settings.DEBUG:
