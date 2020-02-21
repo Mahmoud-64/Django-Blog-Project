@@ -4,3 +4,4 @@ from django.shortcuts import render
 #admin panel page
 def admin_panel_page(request):
       return render(request,'admin panel/dashboard.html',{})
+      

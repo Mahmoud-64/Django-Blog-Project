@@ -1,19 +1,23 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import login
+from accounts.forms import SignUpForm
 # Create your views here.
 from django.shortcuts import render
-
+#UserCreationForm
 def signup_view(request):
     if request.method == 'POST':
-        form= UserCreationForm(request.POST)
+        form= SignUpForm(request.POST, request.FILES)
         if form.is_valid():
             user=form.save()
+            user.refresh_from_db()
+            user.profile.profile_picture = form.cleaned_data.get('profile_picture')
+            user.save()
             login(request,user)
-            return redirect("/post")
+            return redirect("/blog")
     else:
-        form= UserCreationForm()
-    return render(request,'signup.html',{'form':form})
+        form= SignUpForm()
+    return render(request,'auth/sign up.html',{'form':form})
 
 
 def login_view(request):
@@ -22,8 +26,8 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request,user)
-            return redirect("/post")
+            return redirect("/blog")
     else:
         form= AuthenticationForm()
-    return render(request,'login.html',{'form':form})
+    return render(request,'auth/login.html',{'form':form})
 
