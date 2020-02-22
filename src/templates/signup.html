@@ -1,0 +1,6 @@
+<h3>sign up page</h3>
+<form method="post" action="/account/signup/" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form}}
+    <input type="submit" value="signup">
+</form>
