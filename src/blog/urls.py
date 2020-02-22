@@ -13,6 +13,7 @@ urlpatterns = [
     path('admin_panel', postview.admin_panel_page),
     path('account/',include('accounts.urls')),
     path('admin/all_users',postview.all_users),
+    path('admin/delete_user/<id>',postview.delete_user)
 ]
 
 if settings.DEBUG:

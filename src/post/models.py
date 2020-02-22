@@ -12,6 +12,14 @@ class Profile(models.Model):
     user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='images/')
 
+    def delete(self, *args, **kwargs):
+        # You have to prepare what you need before delete the model
+        storage, path = self.profile_picture.storage, self.profile_picture.path
+        # Delete the model before the file
+        super(Profile, self).delete(*args, **kwargs)
+        # Delete the file after the model
+        storage.delete(path)
+
     def __str__(self):
         return self.user.name   
 
