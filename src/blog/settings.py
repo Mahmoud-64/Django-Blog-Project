@@ -38,12 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
-<<<<<<< HEAD
-=======
     'accounts',
     'crispy_forms',
-    
->>>>>>> 3amrawey/adminpanel
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
