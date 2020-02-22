@@ -38,12 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
-<<<<<<< HEAD
-=======
+
     'accounts',
     'crispy_forms',
-    
->>>>>>> 3amrawey/adminpanel
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -63,7 +61,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates/landing_page')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blogproject',
-        'USER':'root',
-        'PASSWORD':'010922105599@',
+        'USER':'newuser',
+        'PASSWORD':'0000',
     }
 }
 
