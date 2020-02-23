@@ -20,8 +20,8 @@ class Profile(models.Model):
         # Delete the file after the model
         storage.delete(path)
 
-    def __str__(self):
-        return self.user.name   
+#    def __str__(self):
+#        return self.user.name   
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
