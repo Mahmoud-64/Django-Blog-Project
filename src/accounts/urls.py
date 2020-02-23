@@ -3,11 +3,12 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf.urls import include
 from django.conf import settings
-from .views import signup_view,login_view
+from .views import signup_view,login_view,add_post_view
 
 urlpatterns = [
     path('signup/', signup_view),
     path('login/', login_view),
+    path('addpost/', add_post_view),
 ]
 
 if settings.DEBUG:
