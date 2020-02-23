@@ -4,6 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.contrib import messages
 from post.models import Profile
+from post.forms import SignUpForm
 # Create your views here.
 #admin panel page
 def admin_panel_page(request):
@@ -29,10 +30,41 @@ def all_users(request):
 #delete user
 def delete_user(request , id):
     user= User.objects.get(id=id)
-    user.delete()
-    messages.success(request, "The user is deleted")  
+    user.delete() 
+    messages.error(request, "The user is deleted") 
     return redirect('/admin/all_users') 
     
-   
+
+
+#edit user
+def edit_user(request,id):
+    user= User.objects.get(id=id)
+    if request.method == 'POST':
+        form= SignUpForm(request.POST, request.FILES,instance=user)
+        if form.is_valid():
+            user=form.save()
+            user.refresh_from_db()
+            user.profile.profile_picture = form.cleaned_data.get('profile_picture')
+            user.save()
+            messages.success(request, "The user Edited") 
+            return redirect('/admin/all_users') 
+    else:
+        form= SignUpForm(instance=user)
+        return render(request,'admin panel/users/edit_user.html',{'user': user,'form':form})
+
+#add user
+def add_user(request): 
+    if request.method == 'POST':
+        form= SignUpForm(request.POST, request.FILES)
+        if form.is_valid():
+            user=form.save()
+            user.refresh_from_db()
+            user.profile.profile_picture = form.cleaned_data.get('profile_picture')
+            user.save()
+            messages.success(request, "The user Edited") 
+            return redirect('/admin/all_users') 
+    else:
+        form= SignUpForm()
+        return render(request,'admin panel/users/add_user.html',{'form':form})   
     
          
