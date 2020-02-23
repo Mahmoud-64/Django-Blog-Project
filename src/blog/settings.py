@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'post',
     'accounts',
     'crispy_forms',
+
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -82,8 +84,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'blogproject',
+<<<<<<< HEAD
         'USER':'root',
         'PASSWORD':'123/456/',
+=======
+        'USER':'newuser',
+        'PASSWORD':'0000',
+>>>>>>> 1014855ef9a67693a48ec0473d2b2e08331f3bf5
     }
 }
 
