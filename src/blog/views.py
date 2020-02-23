@@ -7,7 +7,7 @@ def blog(request):
     return render(request,'landing_page/base.html',{})
 
 def post(request):
-    return render(request,'post.html',{})
+    return render(request,'landing_page/post.html',{})
 
 
 
