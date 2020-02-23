@@ -11,7 +11,7 @@ urlpatterns = [
     path('blog/', blog),
     path('post/', post),
     path('admin_panel', postview.admin_panel_page),
-    path('account/',include('accounts.urls')),
+    # path('account/',include('accounts.urls')),
 ]
 
 if settings.DEBUG:

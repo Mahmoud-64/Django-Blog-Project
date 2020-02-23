@@ -1,96 +1,88 @@
 {% load static %}
 
-    <div class="container">
+  <div class="container">
         <div class="row">
           <!-- Latest Posts -->
           <main class="posts-listing col-lg-8"> 
             <div class="container">
-              <div class="row">
+              <div class="row rounded border border-info p-5 bg-light">
                 <!-- post -->
-                <div class="post col-xl-6">
-                  <div class="post-thumbnail"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-1.jpeg' %}" alt="..." class="img-fluid"></a></div>
+                <div class="post col-xl-6 bg-info p-2 order-1 rounded border border-warning">
+                  <div class="post-thumbnail  rounded border border-danger p-2 "><a href="landing_page/post.html"><img src="{% static 'img/blog-post-1.jpeg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
-                      <div class="date meta-last">20 May | 2016</div>
-                      <div class="category  bg-success  p-3 mb-2" ><a href="#">Business</a></div>
+                      <div class="date meta-last p-2 mt-1 bg-warning rounded-pill border">20 May | 2016</div>
+                      <div class="category  bg-warning  p-2 mt-1 rounded-pill border" ><a href="#">Business</a></div>
                     </div><a href="landing_page/post.html">
-                      <h2 class="h4" style="font-family:'Oleo Script'; color: green;">Alberto Savoia Can Teach You About Interior</h2></a>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <h3 class="h4 p-2">Alberto Savoia Can Teach You About Interior</h2></a>
+                    <p class="text-light mb-4 p-1" style="font-family: 'Jockey One';">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <footer class="post-footer d-flex align-items-center p-1 rounded-pill border"><a href="#" class="author d-flex align-items-center flex-wrap">
                         <div class="avatar"><img src="{% static 'img/avatar-3.jpg' %}" alt="..." class="img-fluid"></div>
-                        <div class="title"><span>John Doe</span></div></a>
-                      <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                      <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        <div class="title text-warning"><span>John Doe</span></div></a>
+                      <div class="date text-warning"><i class="icon-clock"></i> 2 months ago</div>
+                      <div class="comments meta-last text text-warning"><i class="icon-comment"></i>12</div>
                     </footer>
                   </div>
                 </div>
                 <!-- post             -->
-                <div class="post col-xl-6">
-                  <div class="post-thumbnail"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-2.jpg' %}" alt="..." class="img-fluid"></a></div>
+                <div class="post col-xl-6 bg-warning p-2 order-2 rounded border border-info">
+                  <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-2.jpg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
-                      <div class="date meta-last">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
+                      <div class="date meta-last p-2 mt-1 bg-info rounded-pill border">20 May | 2016</div>
+                      <div class="category  bg-info  p-2 mt-1 rounded-pill border"><a href="#">Business</a></div>
                     </div><a href="landing_page/post.html">
-                      <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <h3 class="h4 p-2">Alberto Savoia Can Teach You About Interior</h3></a>
+                    <p class="text-info mb-4 p-1" style="font-family: 'Jockey One';">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <div class="post-footer d-flex align-items-center p-1 rounded-pill border"><a href="#" class="author d-flex align-items-center flex-wrap">
                         <div class="avatar"><img src="{% static 'img/avatar-2.jpg' %}" alt="..." class="img-fluid"></div>
-                        <div class="title"><span>John Doe</span></div></a>
-                      <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                      <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        <div class="title text-light"><span>John Doe</span></div></a>
+                      <div class="date text-light"><i class="icon-clock"></i> 2 months ago</div>
+                      <div class="comments meta-last text-light"><i class="icon-comment"></i>12</div>
                     </div>
                   </div>
                 </div>
                 <!-- post             -->
-                <div class="post col-xl-6">
-                  <div class="post-thumbnail"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-3.jpeg' %}" alt="..." class="img-fluid"></a></div>
+                <div class="post col-xl-6 bg-warning p-2  order-sm-4 rounded border border-info ">
+                  <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-3.jpeg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
-                      <div class="date meta-last">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
+                      <div class="date meta-last p-2 mt-1 bg-info rounded-pill border">20 May | 2016</div>
+                      <div class="category  bg-info  p-2 mt-1 rounded-pill border"><a href="#">Business</a></div>
                     </div><a href="landing_page/post.html">
-                      <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <h3 class="h4 p-2">Alberto Savoia Can Teach You About Interior</h3></a>
+                    <p class="text-info mb-4 p-1" style="font-family: 'Jockey One';">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <div class="post-footer d-flex align-items-center p-1 rounded-pill border"><a href="#" class="author d-flex align-items-center flex-wrap">
                         <div class="avatar"><img src="{% static 'img/avatar-3.jpg' %}" alt="..." class="img-fluid"></div>
-                        <div class="title"><span>John Doe</span></div></a>
-                      <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                      <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        <div class="title text-light"><span>John Doe</span></div></a>
+                      <div class="date text-light"><i class="icon-clock"></i> 2 months ago</div>
+                      <div class="comments meta-last text-light"><i class="icon-comment"></i>12</div>
                     </div>
                   </div>
                 </div>
                 <!-- post -->
-                <div class="post col-xl-6">
-                  <div class="post-thumbnail"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-4.jpeg' %}" alt="..." class="img-fluid"></a></div>
+                <div class="post col-xl-6 bg-info p-2 order-sm-3 order-xl-4 rounded border border-warning">
+                  <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-4.jpeg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
-                      <div class="date meta-last">20 May | 2016</div>
-                      <div class="category"><a href="#">Business</a></div>
+                      <div class="date meta-last p-2 mt-1 bg-warning rounded-pill border">20 May | 2016</div>
+                      <div class="category  bg-warning  p-2 mt-1 rounded-pill border"><a href="#">Business</a></div>
                     </div><a href="landing_page/post.html">
-                      <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                    <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <h3 class="h4 p-2">Alberto Savoia Can Teach You About Interior</h3></a>
+                    <p class="text-light mb-4 p-1" style="font-family: 'Jockey One';">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    <div class="post-footer d-flex align-items-center p-1 rounded-pill border"><a href="#" class="author d-flex align-items-center flex-wrap">
                         <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div>
-                        <div class="title"><span>John Doe</span></div></a>
-                      <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                      <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                        <div class="title text-warning"><span>John Doe</span></div></a>
+                      <div class="date text-warning"><i class="icon-clock"></i> 2 months ago</div>
+                      <div class="comments meta-last text-warning"><i class="icon-comment"></i>12</div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- Pagination -->
-              <nav aria-label="Page navigation example">
-                <ul class="pagination pagination-template d-flex justify-content-center">
-                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
-                  <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                  <li class="page-item"><a href="#" class="page-link">2</a></li>
-                  <li class="page-item"><a href="#" class="page-link">3</a></li>
-                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
-                </ul>
-              </nav>
+             
             </div>
           </main>
+          {%include 'landing_page/side_bar.html'%}
          
         </div>
       </div>
