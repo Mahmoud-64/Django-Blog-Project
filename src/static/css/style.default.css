@@ -115,7 +115,7 @@ h1:hover a {
 }
 
 .category a {
-  color: #999;
+  color: red;
   letter-spacing: 0.08em;
   font-weight: 700;
   text-transform: uppercase;
@@ -125,7 +125,7 @@ h1:hover a {
 
 .category a::after {
   content: ',';
-  color: #ddd;
+  color: paleturquoise;
   display: inline-block;
   margin-right: 5px;
 }
@@ -135,7 +135,7 @@ h1:hover a {
 }
 
 .category a:hover {
-  color: #000;
+  color: red;
 }
 
 i[class*="icon-"] {
@@ -853,7 +853,7 @@ section.latest-posts header {
 }
 
 .post .category a {
-  color: #999;
+  color: gold;
   letter-spacing: 0.05em;
   font-weight: 700;
   text-transform: uppercase;
@@ -1272,7 +1272,7 @@ main.posts-listing .post-footer {
 .widget.categories .item {
   background: #fafafa;
   padding: 10px;
-  color: #777;
+  color: red;
   font-weight: 700;
 }
 
@@ -1286,13 +1286,13 @@ main.posts-listing .post-footer {
 }
 
 .widget.categories .item a:hover {
-  color: #000;
+  color: rgb(18, 223, 52);
   text-decoration: none;
 }
 
 .widget.categories .item span {
   font-size: 0.9em;
-  color: #aaa;
+  color:red;
 }
 
 .widget.tags .tag {
