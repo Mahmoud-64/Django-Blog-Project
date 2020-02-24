@@ -15,5 +15,5 @@ class SignUpForm(UserCreationForm):
 class addPostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'content','author','cat_id')
+        fields = ('title', 'content','author','cat_id','post_pic')
 
