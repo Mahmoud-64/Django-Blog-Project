@@ -34,12 +34,22 @@ def update_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()         
 
+
+
+#tags
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=150,default='#')
+
+    def __str__(self):
+        return self.tag_name
+
 #category
 class Category(models.Model):
-    cat_name = models.TextField(max_length=150,default='No Cat',editable=True)
+    cat_name = models.CharField(max_length=150,editable=True)
 
     def __str__(self):
         return self.cat_name
+        
 #post
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -53,12 +63,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-#tags
-class Tag(models.Model):
-    tag_name = models.CharField(max_length=150)
 
-    def __str__(self):
-        return self.tag_name
 
 #comments
 class Comment(models.Model):

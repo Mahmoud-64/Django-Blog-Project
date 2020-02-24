@@ -1,0 +1,28 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% include 'admin panel/header.html' %}
+
+
+<table border=1 class="table table-dark">
+	
+		<th>Tags</th>
+		<th colspan="4">Actions</th>
+	
+		{% for tg in all  %}
+		<tr>
+			<td>{{tg.tag_name}}</td>
+	
+			<td><a href= "/edit_tag/{{tg.id}}"> Edit </a></td>
+			
+			<td><a href= "/del_tag/{{tg.id}}"> Delete </a></td>
+			
+		</tr>
+	
+	{% endfor%}
+
+
+	<h1><a href= "/add_tag">Add Tag</a></h1>
+	
+	
+{% include 'admin panel/footer.html'%} 
+
