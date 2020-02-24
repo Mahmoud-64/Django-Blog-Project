@@ -11,9 +11,14 @@ urlpatterns = [
     path('blog/', blog),
     path('post/', post),
     path('admin_panel', postview.admin_panel_page),
+
     path('account/',include('accounts.urls')),
+    #users_section
     path('admin/all_users',postview.all_users),
-    path('admin/delete_user/<id>',postview.delete_user)
+    path('admin/delete_user/<id>',postview.delete_user),
+    path('admin/edit_user/<id>',postview.edit_user),
+    path('admin/add_user',postview.add_user),
+
 ]
 
 if settings.DEBUG:

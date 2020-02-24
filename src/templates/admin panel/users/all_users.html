@@ -1,13 +1,21 @@
  {% load static %}
  {% load crispy_forms_tags %}
  {% include 'admin panel/header.html' %}
-
+<div class="row">
+  <div class="container">
+          <a href="/admin/add_user">
+             <button type="button" class="btn ">Add User</button>
+          <a>
+  </div>
+</div>
+</div>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">UserName</th>
       <th scope="col">Active</th>
+      <th scope="col"> Admin</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
@@ -27,10 +35,20 @@
         <input type="checkbox" class="custom-control-input"  id="customSwitch2" disabled>
         <label class="custom-control-label" for="customSwitch2">Not Active</label>
       {% endif %}  
-    </div>    
+     </div>    
      </td>
-    
-      <td><a href="#"><i class="fas fa-user-edit"></i> <a></td>
+     <td>
+        <div class="custom-control custom-switch">
+         {% if user.is_staff %}
+          <input type="checkbox" class="custom-control-input"  checked  >
+          <label class="custom-control-label" ></label>
+        {% else %}  
+         <input type="checkbox" class="custom-control-input"  id="customSwitch2" disabled>
+         <label class="custom-control-label" for="customSwitch2"> </label>
+      {% endif %} 
+      </div>  
+     </td>
+      <td><a href="/admin/edit_user/{{user.id}}"><i class="fas fa-user-edit"></i> <a></td>
       <td>
       <a href="/admin/delete_user/{{user.id}}">
       <i class="fas fa-user-minus"></i> 

@@ -1,0 +1,52 @@
+ {% load static %}
+ {% load crispy_forms_tags %}
+ {% include 'admin panel/header.html' %}
+<table class="table">
+  <thead>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">UserName</th>
+        <th scope="col">Active</th>
+        <th scope="col">image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <th scope="row">{{user.id}}</th>
+        <td>{{user.username}}</td>
+        <!--active toggle button-->
+        <td>
+            <div class="custom-control custom-switch">
+                {% if user.is_active %}
+                    <input type="checkbox" class="custom-control-input"  checked  >
+                    <label class="custom-control-label" >Active</label>
+                {% else %}  
+                    <input type="checkbox" class="custom-control-input"  id="customSwitch2" disabled>
+                    <label class="custom-control-label" for="customSwitch2">Not Active</label>
+                {% endif %}  
+            </div>    
+        </td>
+        <td><img class="img-fluid" width="60px" height="30px" src= "{{user.profile.profile_picture.url}}"/></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!--draw hr-->
+<div class="row">
+    <div class="col"><hr size="30" style="border-top: 1px solid;"></div>
+</div>    
+
+<div class="row">
+    <div class="container">
+        <h3> 
+            Edit User :
+        </h3>    
+        <form method="POST" class="form-signin"  action="#"  enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form|crispy}}
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        </form>
+    </div>
+</div>
+
+  {% include 'admin panel/footer.html'%}      

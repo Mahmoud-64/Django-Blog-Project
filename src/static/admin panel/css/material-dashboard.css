@@ -19752,5 +19752,9 @@ Copyright (c) 2015 Daniel Eden
     display: none !important;
   }
 }
+/* some edit in crispy inputs */
+.form-check .form-check-input {
+opacity: 1;
+}
 
 /*# sourceMappingURL=dashboard-free.css.map */
