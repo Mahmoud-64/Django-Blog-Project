@@ -1,0 +1,9 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% include 'admin panel/header.html' %}
+
+<form method="POST">{%csrf_token%}
+	{{form.as_p}}
+	<button type="submit">Save</button>
+</form>
+{% include 'admin panel/footer.html'%}    

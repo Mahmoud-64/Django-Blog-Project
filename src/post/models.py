@@ -39,8 +39,18 @@ def update_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()         
 
+
+
+#tags
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=150,default='#')
+
+    def __str__(self):
+        return self.tag_name
+
 #category
 class Category(models.Model):
+<<<<<<< HEAD
     cat_name = models.TextField(max_length=150,default='No Cat',editable=True)
     user_id =models.ManyToManyField(User)
     def __str__(self):
@@ -52,6 +62,13 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag_name        
+=======
+    cat_name = models.CharField(max_length=150,editable=True)
+
+    def __str__(self):
+        return self.cat_name
+        
+>>>>>>> 99fa75d5e725fe90c32c1d09fc63b044dfc0143d
 #post
 class Post(models.Model):
     title = models.CharField(max_length=100)

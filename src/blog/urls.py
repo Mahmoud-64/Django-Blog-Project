@@ -27,6 +27,18 @@ urlpatterns = [
     #end blog section
 
 
+    #tags_section
+    path('tags', postview.tags),
+    path('add_tag',postview.add_tag),
+    path('del_tag/<id>',postview.del_tag),
+    path('edit_tag/<id>',postview.edit_tag),
+
+    #category_section
+    path('categories', postview.category),
+    path('add_cat',postview.add_cat),
+    path('edit_cat/<id>',postview.edit_cat),
+    path('del_cat/<id>',postview.del_cat),
+
 ]
 
 if settings.DEBUG:

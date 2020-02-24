@@ -1,0 +1,27 @@
+{% load static %}
+{% load crispy_forms_tags %}
+{% include 'admin panel/header.html' %}
+
+<table border=1 class="table table-dark">
+	
+	
+		<th>Categories</th>
+		<th colspan="4">Actions</th>
+	{% for cat in all  %}
+		<tr>
+			<td>{{cat.cat_name}}</td>
+			<td><a href= "/edit_cat/{{cat.id}}"> Edit </a></td>
+			<td><a href= "/del_cat/{{cat.id}}"> Delete </a></td>	
+		</tr>
+
+	{% endfor%}
+
+	
+	<h1><a href= "/add_cat">Add Category</a></h1>
+	
+	
+	
+</table>
+
+{% include 'admin panel/footer.html'%} 
+
