@@ -100,6 +100,7 @@ DATABASES = {
         'NAME': 'blogproject',
         'USER':'root',
         'PASSWORD':'123/456/',
+
     }
 }
 

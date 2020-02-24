@@ -11,6 +11,7 @@ User = get_user_model()
 class Profile(models.Model):
     user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='images/')
+    
 
     def delete(self, *args, **kwargs):
         # You have to prepare what you need before delete the model
@@ -20,8 +21,8 @@ class Profile(models.Model):
         # Delete the file after the model
         storage.delete(path)
 
-    def __str__(self):
-        return self.user.name   
+#    def __str__(self):
+#        return self.user.name   
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
@@ -37,9 +38,16 @@ def save_user_profile(sender, instance, **kwargs):
 #category
 class Category(models.Model):
     cat_name = models.TextField(max_length=150,default='No Cat',editable=True)
-
+    user_id =models.ManyToManyField(User)
     def __str__(self):
         return self.cat_name
+
+#tags
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.tag_name        
 #post
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -50,15 +58,11 @@ class Post(models.Model):
     post_pic = models.ImageField(default='SOME STRING')
     cat_id = models.ForeignKey(Category,on_delete=models.DO_NOTHING)
     featured = models.BooleanField(default=0)
+    tag_id=models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.title
-#tags
-class Tag(models.Model):
-    tag_name = models.CharField(max_length=150)
 
-    def __str__(self):
-        return self.tag_name
 
 #comments
 class Comment(models.Model):
@@ -70,18 +74,6 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment_content
 
-#tag_post
-class Tag_post(models.Model):
-	post_id=models.ForeignKey(Post,on_delete=models.DO_NOTHING)
-	tag_id=models.ForeignKey(Tag,on_delete=models.DO_NOTHING)
-	def __str__(self):
-		return self.post_id
+
 	
 
-#Cat_User
-class Cat_user(models.Model):
-	user_id=models.ForeignKey(User,on_delete=models.DO_NOTHING)
-	cat_id=models.ForeignKey(Category,on_delete=models.DO_NOTHING)
-	def __str__(self):
-		return self.user_id
-	

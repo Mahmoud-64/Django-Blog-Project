@@ -1,0 +1,62 @@
+ {% load static %}
+ {% load crispy_forms_tags %}
+ {% include 'admin panel/header.html' %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Post Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in objects  %}
+    <tr>
+      <th scope="row">{{post.id}}</th>
+      <td>{{post.title}}</td>
+      <!--Active tab-->
+      <td>{{post.timestamp|timesince}} ago</td>
+     <!-- <td><a href="#"><i class="fas fa-user-edit"></i> <a></td>-->
+      <td>
+        <a href="/account/editpost/{{post.id}}">
+        <i class="fas fa-edit"></i> 
+        </a>
+        </td>
+      <td>
+      <a href="/account/post_delete/{{post.id}}">
+      <i class="fas fa-trash-alt"></i> 
+      </a>
+      </td>
+    </tr>
+    {% endfor %}
+  
+  </tbody>
+</table>
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+<!--end pagination-->
+
+ {% include 'admin panel/footer.html'%}        
