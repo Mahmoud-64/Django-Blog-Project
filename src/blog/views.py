@@ -2,10 +2,7 @@ from django.shortcuts import render
 from post.models import Post
 
 def index(request):
-<<<<<<< HEAD
 
-=======
->>>>>>> beta
     queryset = Post.objects.all()
     return render(request,'landing_page/index.html',{'objects':queryset})
 
