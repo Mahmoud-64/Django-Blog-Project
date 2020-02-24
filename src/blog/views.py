@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from post.models import Post
+from post.models import *
+from django.http import HttpResponse
 
 def index(request):
-    queryset = Post.objects.all()
+    queryset = Post.objects.select_related('author')
+  
+    
     return render(request,'landing_page/index.html',{'objects':queryset})
 
 def blog(request):

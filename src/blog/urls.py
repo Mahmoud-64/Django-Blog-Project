@@ -18,6 +18,14 @@ urlpatterns = [
     path('admin/delete_user/<id>',postview.delete_user),
     path('admin/edit_user/<id>',postview.edit_user),
     path('admin/add_user',postview.add_user),
+    #end user section 
+    #blog section
+    path('admin/addpost/', postview.add_post_view),
+    path('admin/admin_posts_table/',postview.view_all_posts),
+    path('admin/post_delete/<id>',postview.delete_posts),
+    path('admin/editpost/<id>',postview.edit_post),
+    #end blog section
+
 
 ]
 

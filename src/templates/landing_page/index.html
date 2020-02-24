@@ -108,15 +108,15 @@
                 </header>
                 <p>{{queryset.content}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="avatar"><img src="{{queryset.author.profile.profile_picture.url}}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{queryset.author.username}}</span></div></a>
                   <div class="date"><i class="icon-clock"></i> {{queryset.timestamp|timesince}}</div>
                   <div class="comments"><i class="icon-comment"></i>{{queryset.comment_count}}</div>
                 </footer>
               </div>
             </div>
           </div>
-          <div class="image col-lg-5"><img src="{% static 'img/featured-pic-1.jpeg' %}" alt="..."></div>
+          <div class="image col-lg-5"><img width="200px" heigth="200px" src="{{queryset.post_pic.url}}" alt="..."></div>
         </div>
         <br>
         {% endfor %}

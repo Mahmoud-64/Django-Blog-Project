@@ -12,8 +12,4 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'profile_picture', 'password1', 'password2', )
 
 
-class addPostForm(ModelForm):
-    class Meta:
-        model = Post
-        fields = ('title', 'content','author','cat_id','post_pic')
 

@@ -1,22 +1,17 @@
-{% load static %}
-{% load crispy_forms_tags %}
-<!DOCTYPE html>
-<html>
-<head>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<link rel="stylesheet" href="{% static 'auth/login.css' %}">
-</head>
-<body>
+ {% load static %}
+ {% load crispy_forms_tags %}
+ {% include 'admin panel/header.html' %}
 
-<div class="wrapper">
-  <form class="form-signin" method="POST"  action="http://localhost:8000/account/admin_posts_table/" enctype="multipart/form-data">       
-    <h2 class="form-signin-heading">Edit Post</h2>
-     {%csrf_token%}
-      {{ form }}
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Post</button>   
+<div class="container">
+   <h3> 
+      Edit User :
+  </h3>   
+  <form method="POST" class="form-signin"  action="#"  enctype="multipart/form-data">
+       {%csrf_token%}
+       {{form|crispy}}
+       <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
   </form>
+       
 </div>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
-</html>
+{% include 'admin panel/footer.html'%}      

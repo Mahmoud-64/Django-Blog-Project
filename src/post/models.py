@@ -5,12 +5,16 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 # Create your models here.
-
 User = get_user_model()
+#show name of user
+def get_user_name(self):
+    return self.username
+User.add_to_class("__str__",get_user_name)    
 #Profile
 class Profile(models.Model):
     user = models.OneToOneField(User,related_name='profile', on_delete=models.CASCADE)
     profile_picture = models.ImageField(upload_to='images/')
+
     
 
     def delete(self, *args, **kwargs):
@@ -21,8 +25,8 @@ class Profile(models.Model):
         # Delete the file after the model
         storage.delete(path)
 
-#    def __str__(self):
-#        return self.user.name   
+    def __str__(self):
+        return self.user.username   
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
@@ -54,8 +58,8 @@ class Post(models.Model):
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     comment_count = models.IntegerField(default=0)
-    author = models.ForeignKey(Profile, on_delete=models.DO_NOTHING)
-    post_pic = models.ImageField(default='SOME STRING')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    post_pic = models.ImageField(upload_to="posts/")
     cat_id = models.ForeignKey(Category,on_delete=models.DO_NOTHING)
     featured = models.BooleanField(default=0)
     tag_id=models.ManyToManyField(Tag)
