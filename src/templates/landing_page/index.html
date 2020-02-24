@@ -98,26 +98,28 @@
       <div class="container">
         <!-- Post-->
         {%for queryset in objects%}
-        <div class="row d-flex align-items-stretch">
-          <div class="text col-lg-7">
-            <div class="text-inner d-flex align-items-center">
-              <div class="content">
-                <header class="post-header">
-                  <div class="category"><a href="#">{{queryset.cat_id}}</a></div><a href="post.html">
-                    <h2 class="h4">{{queryset.title}}</h2></a>
-                </header>
-                <p>{{queryset.content}}</p>
-                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
-                  <div class="date"><i class="icon-clock"></i> {{queryset.timestamp|timesince}}</div>
-                  <div class="comments"><i class="icon-comment"></i>{{queryset.comment_count}}</div>
-                </footer>
+        
+          <div class="row d-flex align-items-stretch">
+            <div class="text col-lg-7">
+              <div class="text-inner d-flex align-items-center">
+                <div class="content">
+                  <header class="post-header">
+                    <div class="category"><a href="">{{queryset.cat_id}}</a></div><a href="{{queryset.get_absolute_url}}">
+                      <h2 class="h4">{{queryset.title}}</h2></a>
+                  </header>
+                  <p>{{queryset.content}}</p> 
+                  <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+                      <div class="avatar"><img src="{% static 'img/avatar-1.jpg' %}" alt="..." class="img-fluid"></div>
+                      <div class="title"><span>John Doe</span></div></a>
+                    <div class="date"><i class="icon-clock"></i> {{queryset.timestamp|timesince}}</div>
+                    <div class="comments"><i class="icon-comment"></i>{{queryset.comment_count}}</div>
+                  </footer>
+                </div>
               </div>
             </div>
+            <div class="image col-lg-5"><img src="{% static 'img/featured-pic-1.jpeg' %}" alt="..."></div>
           </div>
-          <div class="image col-lg-5"><img src="{% static 'img/featured-pic-1.jpeg' %}" alt="..."></div>
-        </div>
+        
         <br>
         {% endfor %}
         <!-- /post-->

@@ -7,9 +7,9 @@ from post import views as postview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
-    path('blog/', blog),
-    path('post/', post),
+    path('', index, name ='post_list'),
+    path('blog/', blog,),
+    path('post/<id>/', post, name ='post_detail'),
     path('admin_panel', postview.admin_panel_page),
 
     path('account/',include('accounts.urls')),
