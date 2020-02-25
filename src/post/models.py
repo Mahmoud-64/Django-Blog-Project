@@ -85,8 +85,7 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.comment_content
+        return self.user_id.username
 
 
-	
 

@@ -7,9 +7,7 @@ from post import views as postview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
-    path('blog/', blog),
-    path('post/', post),
+  
     path('admin_panel', postview.admin_panel_page),
 
     path('account/',include('accounts.urls')),
@@ -38,6 +36,10 @@ urlpatterns = [
     path('add_cat',postview.add_cat),
     path('edit_cat/<id>',postview.edit_cat),
     path('del_cat/<id>',postview.del_cat),
+
+
+    #landing page
+    path('',include('landing_page.urls')),
 
 ]
 

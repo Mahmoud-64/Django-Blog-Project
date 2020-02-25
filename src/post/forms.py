@@ -14,10 +14,10 @@ class SignUpForm(UserCreationForm):
 
 #post form 
 class addPostForm(ModelForm):
-    tags=forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
+    #tags=forms.ModelMultipleChoiceField(queryset=Tag.objects.all())
     class Meta:
         model = Post
-        fields = ('title', 'content','author','tags','cat_id','post_pic',)
+        fields = ('title', 'content','author','cat_id','post_pic','tag_id',)
 
 
 class TagForm(forms.ModelForm):
