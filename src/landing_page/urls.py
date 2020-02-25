@@ -10,8 +10,11 @@ urlpatterns = [
     path('', index),
     path('blog/', blog),
     path('post/', post),
-    #landing page
+    #post page
     path('post/<id>',land_view.post_page),
+    #like page
+    path('like/<u_id>/<p_id>',land_view.like)
+
 
 ]
 

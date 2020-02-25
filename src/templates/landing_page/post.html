@@ -142,8 +142,10 @@
                 {% if request.user.is_authenticated%}
                 <div class="add-comment">
                   <header>
+                    <a href="/like/{{user.id}}/{{queryset.id}}" ><i class="fa fa-thumbs-up"></i></like>
                     <h3 class="h6">Leave a reply</h3>
                   </header>
+                 
                   <form action="#" class="commenting-form">
                     {% csrf_token %}
                     <div class="row">
