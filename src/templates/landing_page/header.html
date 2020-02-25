@@ -84,15 +84,14 @@ font-family: 'Monoton';">Django Blog - Team 13</a>
                 {% if user.is_staff %}
                 <li class="nav-item"><a href="/admin_panel" class="nav-link ">Admin </a>
                 </li>
-                {% else %}
-                <li class="nav-item"><a href="#" class="nav-link ">Logout</a>
-                </li>
-                {% endif %}
-              
+                {% elif user.username != Null  %}
 
-                {% else %}
                 <li class="nav-item"><a href="#" class="nav-link ">Logout</a>
                 </li>
+                {% else %}
+                <li class="nav-item"><a href="#" class="nav-link ">login</a>
+                </li>
+                 {% endif %}
                 {% endif %}
               </ul>
               <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
