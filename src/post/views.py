@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from post.models import Profile
 from post.forms import SignUpForm
+from .forms import CommentForm
 # Create your views here.
 #admin panel page
 def admin_panel_page(request):

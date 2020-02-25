@@ -20,9 +20,7 @@ class Profile(models.Model):
         super(Profile, self).delete(*args, **kwargs)
         # Delete the file after the model
         storage.delete(path)
-
-#    def __str__(self):
-#        return self.user.name   
+  
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
@@ -60,6 +58,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def get_comments(self):
+        return self.comments.all().order_by('-timestamp')
 #tags
 class Tag(models.Model):
     tag_name = models.CharField(max_length=150)
@@ -69,13 +71,14 @@ class Tag(models.Model):
 
 #comments
 class Comment(models.Model):
-    comment_content = models.TextField()
-    user_id = models.ForeignKey(User,on_delete=models.DO_NOTHING)
-    post_id = models.ForeignKey(Post,on_delete=models.DO_NOTHING)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     timestamp = models.DateTimeField(auto_now_add=True)
+    content = models.TextField(default="SOME STRING")
+    post = models.ForeignKey(
+        'Post', related_name='comments', on_delete=models.CASCADE, default='SOME STRING')
 
     def __str__(self):
-        return self.comment_content
+        return self.user.username
 
 #tag_post
 class Tag_post(models.Model):
@@ -91,4 +94,15 @@ class Cat_user(models.Model):
 	cat_id=models.ForeignKey(Category,on_delete=models.DO_NOTHING)
 	def __str__(self):
 		return self.user_id
+
+
+# class Comment(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     timestamp = models.DateTimeField(auto_now_add=True)
+#     content = models.TextField()
+#     post = models.ForeignKey(
+#         'Post', related_name='comments', on_delete=models.CASCADE)
+
+#     def __str__(self):
+#         return self.user.username
 	
