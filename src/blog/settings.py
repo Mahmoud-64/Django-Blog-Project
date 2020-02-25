@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'post',
     'accounts',
     'crispy_forms',
+    'landing_page',
 
 
 ]
