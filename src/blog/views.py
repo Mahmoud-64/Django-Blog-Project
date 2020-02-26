@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 def index(request):
     queryset = Post.objects.select_related('author')
-  
+    
     
     return render(request,'landing_page/index.html',{'objects':queryset})
 
