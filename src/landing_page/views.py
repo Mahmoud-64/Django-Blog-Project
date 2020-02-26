@@ -4,6 +4,7 @@ from django.http import *
 from django.contrib.auth.models import User
 from landing_page.forms import *
 from landing_page.models import *
+from django.shortcuts import get_object_or_404
 # Create your views here.
 def post_page(request,id):
     queryset=Post.objects.select_related('author').get(id=id)
@@ -32,4 +33,30 @@ def like(request,u_id,p_id):
         like=Like(user_id=user,post_id=post)
         like.save()  
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def dislike(request,u_id,p_id):
+    #user
+    user=User.objects.get(id=u_id)
+    #post
+    post=Post.objects.get(id=p_id)  
+    #check_user_dislike
+    user_dislike=Dislike.objects.filter(post_id=post,user_id=user)
+    if(len(user_dislike)!=0):
+        user_dislike.delete()
+    else:    
+        #Dislike
+        dislike=Dislike(user_id=user,post_id=post)
+        #save Dislike in DB
+        dislike.save()
+    #check for remove post
+    #check_dislike_post
+    check_dislike= Dislike.objects.filter(post_id=post)
+    #check
+    if(len(check_dislike)<9):
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        post.delete()  
+        return redirect('/')
+        
+                
     

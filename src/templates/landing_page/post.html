@@ -146,10 +146,24 @@
             
                 {% if request.user.is_authenticated%}
                 <div class="add-comment">
+                <div class="row border">
+                <div class="col-6 border">
+                  <a href="/like/{{user.id}}/{{queryset.id}}" >
+                    <i class="fa fa-thumbs-up fa-2x"></i>
+                    Like
+                  </a>
+                 </div>
+                 <div class="col-6 border">
+                  <a href="/dislike/{{user.id}}/{{queryset.id}}">
+                    <i class="fa fa-thumbs-down fa-2x"> </i>
+                    DisLike
+                  </a>
+                 </div>
+                </div>
+                <br>
                   <header>
-                    <a href="/like/{{user.id}}/{{queryset.id}}" ><i class="fa fa-thumbs-up"></i></like>
                     <h3 class="h6">Leave a reply</h3>
-                  </header> value|q value|q
+                  </header>
                  
                   <form action="#" class="commenting-form">
                     {% csrf_token %}

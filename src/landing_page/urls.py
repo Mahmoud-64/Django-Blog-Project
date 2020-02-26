@@ -13,7 +13,10 @@ urlpatterns = [
     #post page
     path('post/<id>',land_view.post_page),
     #like page
-    path('like/<u_id>/<p_id>',land_view.like)
+    path('like/<u_id>/<p_id>',land_view.like),
+    #dis like
+    path('dislike/<u_id>/<p_id>',land_view.dislike),
+
 
 
 ]
