@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from landing_page.forms import *
 from landing_page.models import *
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 # Create your views here.
 
 def post_page(request,id):
@@ -100,5 +101,13 @@ def subscribe(request,u_id,c_id):
     cat.save(data)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
-                
+def search(request):
+    queryset = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset = queryset.filter(
+            Q(title__icontains=query) |
+            Q(content=query)
+        ).distinct()
+    return render(request,'landing_page/search_result.html', {'queryset': queryset})                
     
