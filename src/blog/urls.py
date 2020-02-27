@@ -26,16 +26,18 @@ urlpatterns = [
 
 
     #tags_section
-    path('tags', postview.tags),
-    path('add_tag',postview.add_tag),
-    path('del_tag/<id>',postview.del_tag),
-    path('edit_tag/<id>',postview.edit_tag),
+    path('admin/all_tags', postview.tags),
+    path('admin/add_tag',postview.add_tag),
+    path('admin/del_tag/<id>',postview.del_tag),
+    path('admin/edit_tag/<id>',postview.edit_tag),
 
     #category_section
-    path('categories', postview.category),
-    path('add_cat',postview.add_cat),
-    path('edit_cat/<id>',postview.edit_cat),
-    path('del_cat/<id>',postview.del_cat),
+    path('admin/categories', postview.category),
+    path('admin/add_cat',postview.add_cat),
+    path('admin/edit_cat/<id>',postview.edit_cat),
+    path('admin/del_cat/<id>',postview.del_cat),
+
+    
 
 
     #landing page

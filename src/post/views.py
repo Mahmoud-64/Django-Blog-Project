@@ -6,11 +6,17 @@ from django.contrib import messages
 from post.models import *
 from post.forms import *
 from django.contrib.admin.views.decorators import staff_member_required
+
 # Create your views here.
 #admin panel page
 @staff_member_required(login_url="/account/login")
 def admin_panel_page(request):
-      return render(request,'admin panel/dashboard.html',{})
+    posts=len(Post.objects.all())
+    users=len(User.objects.all())
+    comments=len(Comment.objects.all())
+    tags=len(Tag.objects.all())
+    return render(request,'admin panel/dashboard.html',{'posts':posts,
+    'users':users,'comments':comments , 'tags':tags})
       
 
 #all user dashboard
@@ -117,23 +123,26 @@ def edit_post(request,id):
 
 #category section
 #view all categories
+@staff_member_required(login_url="/account/login")
 def category(request):
 	all=Category.objects.all()
 	context={'all':all}
 	return render(request,'admin panel/categories/category.html',context)
 
 #add cat
+@staff_member_required(login_url="/account/login")
 def add_cat(request):
 	form = CategoryForm()
 	if request.method=="POST":
 		form= CategoryForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/categories')
+			return redirect('/admin/categories')
 
 	return render(request , 'admin panel/categories/edit.html',{'form':form})
 
 #edit category
+@staff_member_required(login_url="/account/login")
 def edit_cat(request, id):
 	ct = "<h1> edit category that have id : ",id,"</h1>"
 	cat=Category.objects.get(id=id)
@@ -142,39 +151,42 @@ def edit_cat(request, id):
 		form= CategoryForm(request.POST,instance=cat)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/categories')
+			return redirect('/admin/categories')
 	else:
 		form= CategoryForm(instance=cat)
 
 	return render (request, 'admin panel/categories/edit.html',{'form':form})
 
 #delete category
-
+@staff_member_required(login_url="/account/login")
 def del_cat(request, id):
 	ct = "<h1> delete category that have id : ",id,"</h1>"
 	cat=Category.objects.get(id=id)
 	cat.delete()
-	return HttpResponseRedirect('/categories')
+	return redirect('/admin/categories')
 
 
 #tag section
 #add tag
+@staff_member_required(login_url="/account/login")
 def add_tag(request):
 	form = TagForm()
 	if request.method=="POST":
 		form= TagForm(request.POST)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/tags')
+			return redirect('/admin/all_tags')
 	return render(request , 'admin panel/tags/edit.html',{'form':form})
 
 #view all tags
+@staff_member_required(login_url="/account/login")
 def tags(request):
 	all=Tag.objects.all()
 	context={'all':all}
 	return render(request,'admin panel/tags/tags.html',context)
 
 #edit tag
+@staff_member_required(login_url="/account/login")
 def edit_tag(request, id):
 	tg = "<h1> edit Tag that have id : ",id,"</h1>"
 	tag=Tag.objects.get(id=id)
@@ -183,19 +195,21 @@ def edit_tag(request, id):
 		form= TagForm(request.POST,instance=tag)
 		if form.is_valid():
 			form.save()
-			return HttpResponseRedirect('/tags')
+			return redirect('/admin/all_tags')
 	else:
 		form= TagForm(instance=tag)
 
 	return render (request, 'admin panel/tags/edit.html',{'form':form})
 
 #delete tag
-
+@staff_member_required(login_url="/account/login")
 def del_tag(request, id):
 	st = "<h1> delete tag that have id : ",id,"</h1>"
 	std=Tag.objects.get(id=id)
 	std.delete()
-	return HttpResponseRedirect('/tags')
+	return redirect('/admin/all_tags')
+
+  
 
 
     
