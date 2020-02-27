@@ -8,7 +8,7 @@
             <div class="container">
               <div class="row rounded border border-info p-5 bg-light">
                 <!-- post -->
-                <div class="post col-xl-6 bg-info p-2 order-1 rounded border border-warning">
+                <!-- <div class="post col-xl-6 bg-info p-2 order-1 rounded border border-warning">
                   <div class="post-thumbnail  rounded border border-danger p-2 "><a href="landing_page/post.html"><img src="{% static 'img/blog-post-1.jpeg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
@@ -25,8 +25,7 @@
                     </footer>
                   </div>
                 </div>
-                <!-- post             -->
-                <div class="post col-xl-6 bg-warning p-2 order-2 rounded border border-info">
+                <!-- <div class="post col-xl-6 bg-warning p-2 order-2 rounded border border-info">
                   <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-2.jpg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
@@ -42,27 +41,35 @@
                       <div class="comments meta-last text-light"><i class="icon-comment"></i>12</div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- post             -->
+                {%for queryset in objects%}
                 <div class="post col-xl-6 bg-warning p-2  order-sm-4 rounded border border-info ">
-                  <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-3.jpeg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
+                  <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{{queryset.post_pic.url}}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
                       <div class="date meta-last p-2 mt-1 bg-info rounded-pill border">20 May | 2016</div>
-                      <div class="category  bg-info  p-2 mt-1 rounded-pill border"><a href="#">Business</a></div>
-                    </div><a href="landing_page/post.html">
-                      <h3 class="h4 p-2">Alberto Savoia Can Teach You About Interior</h3></a>
-                    <p class="text-info mb-4 p-1" style="font-family: 'Jockey One';">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                      <div class="category  bg-info  p-2 mt-1 rounded-pill border"><a href="/post/{{queryset.id}}">{{queryset.cat_id}}</a></div><a href="/post/{{queryset.id}}"></a>
+                    </div><a href="/post/{{queryset.id}}">
+                      <h3 class="h4 p-2">{{queryset.title}}</h3></a>
+                    <p class="text-info mb-4 p-1" style="font-family: 'Jockey One';">{{queryset.content}}</p>
                     <div class="post-footer d-flex align-items-center p-1 rounded-pill border"><a href="#" class="author d-flex align-items-center flex-wrap">
-                        <div class="avatar"><img src="{% static 'img/avatar-3.jpg' %}" alt="..." class="img-fluid"></div>
-                        <div class="title text-light"><span>John Doe</span></div></a>
-                      <div class="date text-light"><i class="icon-clock"></i> 2 months ago</div>
-                      <div class="comments meta-last text-light"><i class="icon-comment"></i>12</div>
-                    </div>
+                      <div class="avatar"><img src="{{queryset.author.profile.profile_picture.url}}" alt="..." class="img-fluid"></div>
+                      <div class="title text-light"><span>{{queryset.author.username}}</span></div></a>
+                    <div class="date text-light">{{queryset.timestamp|timesince}}</i></div>
+                    <div class="comments meta-last text-light"><i class="icon-comment"></i>{{queryset.comment_count}}</div>
                   </div>
                 </div>
+                      
+                   
+
+                  </div>
+                
+                </div>
+                {% endfor %}
+
                 <!-- post -->
-                <div class="post col-xl-6 bg-info p-2 order-sm-3 order-xl-4 rounded border border-warning">
+                <!-- <div class="post col-xl-6 bg-info p-2 order-sm-3 order-xl-4 rounded border border-warning">
                   <div class="post-thumbnail rounded border border-danger p-2"><a href="landing_page/post.html"><img src="{% static 'img/blog-post-4.jpeg' %}" alt="..." class="img-fluid rounded border border-danger p-1"></a></div>
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
@@ -80,7 +87,7 @@
                   </div>
                 </div>
               </div>
-             
+              -->
             </div>
           </main>
           {%include 'landing_page/side_bar.html'%}
