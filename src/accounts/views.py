@@ -5,6 +5,8 @@ from accounts.forms import SignUpForm
 from post.models import Post
 from django.http import HttpResponseRedirect
 from django.http import HttpResponse
+from django.contrib.auth import logout
+
 # Create your views here.
 from django.shortcuts import render
 #UserCreationForm
@@ -22,7 +24,7 @@ def signup_view(request):
         form= SignUpForm()
     return render(request,'auth/sign up.html',{'form':form})
 
-
+#login 
 def login_view(request):
     if request.method == 'POST':
         form= AuthenticationForm(data=request.POST)
@@ -34,6 +36,11 @@ def login_view(request):
     else:
         form= AuthenticationForm()
     return render(request,'auth/login.html',{'form':form})
+
+#logout
+def logout_view(request):
+    logout(request)    
+    return redirect("/account/login")  
 
 
 

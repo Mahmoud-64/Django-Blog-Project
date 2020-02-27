@@ -10,8 +10,8 @@
 	{% for cat in all  %}
 		<tr>
 			<td>{{cat.cat_name}}</td>
-			<td><a href= "/edit_cat/{{cat.id}}"> Edit </a></td>
-			<td><a href= "/del_cat/{{cat.id}}"> Delete </a></td>	
+			<td><a href= "/admin/edit_cat/{{cat.id}}"> Edit </a></td>
+			<td><a href= "/admin/del_cat/{{cat.id}}"> Delete </a></td>	
 		</tr>
 
 	{% endfor%}
