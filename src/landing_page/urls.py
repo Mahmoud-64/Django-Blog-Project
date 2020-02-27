@@ -12,6 +12,8 @@ urlpatterns = [
     path('land', index),
     path('blog/', blog),
     path('post/', post),
+    #path
+    path('cat_post/<id>',land_view.cat_page),
     #post page
     path('post/<id>',land_view.post_page),
     #like page

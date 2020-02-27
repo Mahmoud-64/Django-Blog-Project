@@ -109,5 +109,13 @@ def search(request):
             Q(title__icontains=query) |
             Q(content=query)
         ).distinct()
-    return render(request,'landing_page/search_result.html', {'queryset': queryset})                
+    return render(request,'landing_page/search_result.html', {'queryset': queryset})   
+
+#def cat
+def cat_page(request,id):
+    posts=Post.objects.filter(cat_id=id)
+    #return HttpResponse(posts.query)
+    cat=Category.objects.all()[:5]
+    tag=Tag.objects.all()
+    return render(request,'landing_page/base.html',{'tags':tag,'all':cat,'objects':posts})                 
     

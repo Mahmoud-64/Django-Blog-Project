@@ -5,9 +5,9 @@
       <header>
         <h3 class="h6 text-light" style=" font-weight: bold; font-size: 30px; font-family: 'Share';">Search the blog</h3>
       </header>
-      <form action="#" class="search-form">
+      <form action="{%url 'search'%}" class="search-form">
         <div class="form-group">
-          <input type="search" placeholder="What are you looking for?">
+          <input type="text" name="q" placeholder="What are you looking for?">
           <button type="submit" class="submit"><i class="icon-search"></i></button>
         </div>
       </form>
@@ -52,7 +52,7 @@
         {% for cat in all %}
         <div class="item d-flex justify-content-between">
          
-          <p>{{cat.cat_name}}</p>
+          <a href="/cat_post/{{cat.id}}">{{cat.cat_name}}</a>
           <a href="/subscribe/{{user.id}}/{{cat.id}}">
            <button id="myDIV{{cat.id}}" onclick="myFunction({{cat.id}})" type="submit" name="cat_id" value="{{Category.id}}}" class="rounded-pill border bg-warning text-light">
             Subscribe
