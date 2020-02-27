@@ -89,6 +89,16 @@ def dislike(request,u_id,p_id):
     else:
         post.delete()  
         return redirect('/')
+
+
+#subscribe
+def subscribe(request,u_id,c_id):
+    user = User.objects.get(id=u_id)
+    cat= Category.objects.get(id=c_id)
+    #save data
+    data=cat.user_id.add(request.user)
+    cat.save(data)
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
                 
     

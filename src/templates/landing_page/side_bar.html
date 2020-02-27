@@ -49,13 +49,18 @@
     <!-- Widget [Categories Widget]-->
     <div class="widget categories bg-info rounded border border-danger">
       <header>
-        <h3 class="h6 text-light" style=" font-weight: bold; font-size: 30px; font-family: 'Share';">Categories</h3>
-      </header>
-      <div class="item d-flex justify-content-between"><a href="#">Growth</a><span>12</span></div>
-      <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-      <div class="item d-flex justify-content-between"><a href="#">Sales</a><span>8</span></div>
-      <div class="item d-flex justify-content-between"><a href="#">Tips</a><span>17</span></div>
-      <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
+        {% for cat in all %}
+        <div class="item d-flex justify-content-between">
+         
+          <p>{{cat.cat_name}}</p>
+          <a href="/subscribe/{{user.id}}/{{cat.id}}">
+           <button id="myDIV{{cat.id}}" onclick="myFunction({{cat.id}})" type="submit" name="cat_id" value="{{Category.id}}}" class="rounded-pill border bg-warning text-light">
+            Subscribe
+           </button>
+          </a>
+           <br>
+           </div>
+        {% endfor %}
     </div>
     <!-- Widget [Tags Cloud Widget]-->
     <div class="widget tags bg-info rounded border border-danger">       
@@ -63,11 +68,9 @@
         <h3 class="h6 text-light" style=" font-weight: bold; font-size: 30px; font-family: 'Share';">Tags</h3>
       </header>
       <ul class="list-inline">
-        <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-        <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-        <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-        <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-        <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+        {% for tag in tags %}
+        <li class="list-inline-item"><a href="#" class="tag">{{tag.tag_name}}</a></li>
+        {% endfor %}
       </ul>
     </div>
   </aside>

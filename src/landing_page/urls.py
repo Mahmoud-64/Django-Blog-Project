@@ -16,6 +16,7 @@ urlpatterns = [
     path('like/<u_id>/<p_id>',land_view.like),
     #dis like
     path('dislike/<u_id>/<p_id>',land_view.dislike),
+    path('subscribe/<u_id>/<c_id>',land_view.subscribe),
 
 
 
