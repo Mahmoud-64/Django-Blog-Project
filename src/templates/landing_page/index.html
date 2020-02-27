@@ -37,9 +37,9 @@
             <div class="close-btn"><i class="icon-close"></i></div>
             <div class="row d-flex justify-content-center">
               <div class="col-md-8">
-                <form action="#">
+                <form action="{%url 'search'%}">
                   <div class="form-group">
-                    <input type="search" name="search" id="search" placeholder="What are you looking for?">
+                    <input type="text" name="q"  placeholder="What are you looking for?">
                     <button type="submit" class="submit"><i class="icon-search-1"></i></button>
                   </div>
                 </form>
@@ -108,7 +108,7 @@
                 </header>
                 <p>{{queryset.content}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{queryset.author.profile.profile_picture.url}}" alt="..." class="img-fluid"></div>
+                    <div class="avatar"><img src="" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{queryset.author.username}}</span></div></a>
                   <div class="date"><i class="icon-clock"></i> {{queryset.timestamp|timesince}}</div>
                   <div class="comments"><i class="icon-comment"></i>{{queryset.comment_count}}</div>

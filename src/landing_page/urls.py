@@ -5,6 +5,7 @@ from django.conf import settings
 from post import views as postview
 from blog.views import index,blog,post
 from landing_page import views as land_view
+from landing_page.views import search
 
 urlpatterns = [
     path('', index),
@@ -16,6 +17,7 @@ urlpatterns = [
     path('like/<u_id>/<p_id>',land_view.like),
     #dis like
     path('dislike/<u_id>/<p_id>',land_view.dislike),
+    path('search', search,name='search'),
 
 
 

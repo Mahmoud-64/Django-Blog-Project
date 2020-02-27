@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from landing_page.forms import *
 from landing_page.models import *
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 # Create your views here.
 def post_page(request,id):
     queryset=Post.objects.select_related('author').get(id=id)
@@ -60,3 +61,12 @@ def dislike(request,u_id,p_id):
         
                 
     
+def search(request):
+    queryset = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset = queryset.filter(
+            Q(title__icontains=query) |
+            Q(content=query)
+        ).distinct()
+    return render(request,'landing_page/search_result.html', {'queryset': queryset})
