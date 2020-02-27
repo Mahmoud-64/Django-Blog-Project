@@ -8,6 +8,12 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def post_page(request,id):
+    #post
+    post= Post.objects.get(id=id)
+    #like
+    like_check=len(Like.objects.filter(user_id=request.user,post_id=post))
+    #dislike
+    dilike_check=len(Dislike.objects.filter(user_id=request.user,post_id=post))
     #data of post
     queryset=Post.objects.select_related('author').get(id=id)
     #data of comments
@@ -33,11 +39,14 @@ def post_page(request,id):
                 new_comment.save()
                 return redirect('/post/'+id)
             else:
-                return render(request,'landing_page/post.html',{'queryset':queryset,'form':form,'comments':comments,'comments_len':comments_len})
+                return render(request,'landing_page/post.html',
+                {'queryset':queryset,'form':form,'comments':comments,'comments_len':comments_len
+                ,'like_check':like_check ,'dislike_check':dilike_check})
 
     else:
         #return HttpResponse(queryset.author.username)
-        return render(request,'landing_page/post.html',{'queryset':queryset,'form':form,'comments':comments,'comments_len':comments_len})
+        return render(request,'landing_page/post.html',{'queryset':queryset,'form':form,'comments':comments,'comments_len':comments_len
+        ,'like_check':like_check ,'dislike_check':dilike_check})
 
 #like
 @login_required(login_url='/accounts/login/')

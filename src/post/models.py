@@ -82,10 +82,20 @@ class Comment(models.Model):
     comment_content = models.TextField()
     user_id = models.ForeignKey(User,on_delete=models.DO_NOTHING)
     post_id = models.ForeignKey(Post,on_delete=models.DO_NOTHING)
+    status=models.IntegerField(default=0)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user_id.username
+
+#reply
+class relay(models.Model):
+    reply_content=models.TextField()
+    comment=models.ForeignKey(Comment,on_delete=models.DO_NOTHING)
+    user=models.ForeignKey(User,on_delete=models.DO_NOTHING)
+   
+    def __str__(self):
+        return self.reply_content    
 
     
 

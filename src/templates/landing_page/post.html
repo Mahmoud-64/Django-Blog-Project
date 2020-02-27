@@ -122,7 +122,7 @@
                         <div class="image">
                         <img src="{{comment.user_id.profile.profile_picture.url}}" alt="..." class="img-fluid rounded-circle">
                         </div>
-                        <div class="title"><strong>{{comment.user_id.username}}</strong><span class="date">May 2016</span></div>
+                        <div class="title"><strong>{{comment.user_id.username}}</strong><span class="date">{{comment.timestamp|timesince}}</span></div>
                       </div>
                     </div>
                     <div class="comment-body">
@@ -137,13 +137,21 @@
                 <div class="add-comment">
                 <div class="row border">
                 <div class="col-6 border">
+                 {% if like_check == 0 %}
                   <a href="/like/{{user.id}}/{{queryset.id}}" >
-                    <i class="fa fa-thumbs-up fa-2x"></i>
+                   {% else %}
+                    <a href="/like/{{user.id}}/{{queryset.id}}"  style="color:blue">
+                  {% endif %}
+                    <i class="fa fa-thumbs-up fa-2x" ></i>
                     Like
                   </a>
                  </div>
                  <div class="col-6 border">
-                  <a href="/dislike/{{user.id}}/{{queryset.id}}">
+                 {% if dislike_check == 0 %}
+                  <a href="/dislike/{{user.id}}/{{queryset.id}}"  >
+                  {% else %}
+                  <a href="/dislike/{{user.id}}/{{queryset.id}}" style="color:blue">
+                  {% endif %}
                     <i class="fa fa-thumbs-down fa-2x"> </i>
                     DisLike
                   </a>
