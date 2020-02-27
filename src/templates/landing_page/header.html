@@ -74,21 +74,22 @@ font-family: 'Monoton';">Django Blog - Team 13</a>
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="/" class="nav-link ">Home</a>
                 </li>
-                <li class="nav-item"><a href="/land" class="nav-link active ">old design</a>
-                </li>
-              
-                {% if user != Null %}
+             
+                {% if user.is_authenticated %}
                 {% if user.is_staff %}
                 <li class="nav-item"><a href="/admin_panel" class="nav-link ">Admin </a>
                 </li>
-                {% elif user.username != Null  %}
+                {% else  %}
 
-                <li class="nav-item"><a href="#" class="nav-link ">Logout</a>
+                <li class="nav-item"><a href="/account/logout" class="nav-link ">Logout</a>
                 </li>
+               {% endif %}
                 {% else %}
-                <li class="nav-item"><a href="#" class="nav-link ">login</a>
+                  
+                <li class="nav-item"><a href="/account/signup" class="nav-link ">SignUp</a>
                 </li>
-                 {% endif %}
+                <li class="nav-item"><a href="/account/login" class="nav-link ">Login</a>
+                </li>
                 {% endif %}
                 
               </ul>

@@ -65,6 +65,23 @@
               </li>
               <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
               </li>
+               {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <li class="nav-item"><a href="/admin_panel" class="nav-link ">Admin </a>
+                </li>
+                {% else  %}
+
+                <li class="nav-item"><a href="/account/logout" class="nav-link ">Logout</a>
+                </li>
+               {% endif %}
+                {% else %}
+                  
+                <li class="nav-item"><a href="/account/signup" class="nav-link ">SignUp</a>
+                </li>
+                <li class="nav-item"><a href="/account/login" class="nav-link ">Login</a>
+                </li>
+                {% endif %}
+                
             </ul>
             <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
             <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul>

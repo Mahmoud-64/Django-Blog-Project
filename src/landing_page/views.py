@@ -7,14 +7,12 @@ from landing_page.models import *
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 # Create your views here.
+#post_page
 
 def post_page(request,id):
     #post
     post= Post.objects.get(id=id)
-    #like
-    like_check=len(Like.objects.filter(user_id=request.user,post_id=post))
-    #dislike
-    dilike_check=len(Dislike.objects.filter(user_id=request.user,post_id=post))
+  
     #data of post
     queryset=Post.objects.select_related('author').get(id=id)
     #data of comments
@@ -27,6 +25,10 @@ def post_page(request,id):
     
     if request.method =="POST":
         if request.user.is_authenticated:
+            #like
+            like_check=len(Like.objects.filter(user_id=request.user,post_id=post))
+            #dislike
+            dilike_check=len(Dislike.objects.filter(user_id=request.user,post_id=post))
             form = CommentForm(request.POST)
             if form.is_valid():
                 #stop save data
@@ -47,10 +49,10 @@ def post_page(request,id):
     else:
         #return HttpResponse(queryset.author.username)
         return render(request,'landing_page/post.html',{'queryset':queryset,'form':form,'comments':comments,'comments_len':comments_len
-        ,'like_check':like_check ,'dislike_check':dilike_check})
+        })
 
 #like
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/account/login/')
 def like(request,u_id,p_id):
     #user 
     user = User.objects.get(id=u_id)
@@ -66,7 +68,7 @@ def like(request,u_id,p_id):
         like.save()  
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 #dislike
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/account/login/')
 def dislike(request,u_id,p_id):
     #user
     user=User.objects.get(id=u_id)
