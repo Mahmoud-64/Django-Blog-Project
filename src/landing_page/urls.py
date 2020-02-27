@@ -7,7 +7,7 @@ from blog.views import index,blog,post
 from landing_page import views as land_view
 
 urlpatterns = [
-    path('', index),
+    path('', blog),
     path('blog/', blog),
     path('post/', post),
     #post page
